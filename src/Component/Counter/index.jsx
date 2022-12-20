@@ -3,11 +3,13 @@ import "./style.css";
 
 export default class Counter extends Component {
   state = {
-    counter: 0,
+    counter: this.props.initial || 0,
   };
   increment = () => {
     this.setState((prevState) => ({
-      counter: prevState.counter + 1,
+      counter: this.props.initial
+        ? prevState.counter + this.props.initial
+        : prevState.counter + 1,
     }));
   };
 
@@ -15,7 +17,9 @@ export default class Counter extends Component {
     this.setState((prevState) => {
       if (prevState.counter > 0) {
         return {
-          counter: prevState.counter - 1,
+          counter: this.props.initial
+            ? prevState.counter - this.props.initial
+            : prevState.counter - 1,
         };
       }
     });
