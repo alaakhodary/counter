@@ -5,6 +5,7 @@ export default class Counter extends Component {
   state = {
     counter: this.props.initial || 0,
   };
+
   increment = () => {
     this.setState((prevState) => ({
       counter: this.props.initial
@@ -24,6 +25,9 @@ export default class Counter extends Component {
       }
     });
   };
+
+  /* array = ["ahmed", "mohammed", "mahmoud", "may", "hiba", "saleh", "reema"]; */
+
   render() {
     return (
       <section className="section-1">
@@ -34,6 +38,14 @@ export default class Counter extends Component {
           -
         </button>
         <span>{this.state.counter}</span>
+
+        {/*  <div>
+          <ul>
+            {this.array.map((todo, index) => {
+              return <li key={index}>{todo}</li>;
+            })}
+          </ul>
+        </div> */}
       </section>
     );
   }
