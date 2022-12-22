@@ -9,6 +9,7 @@ const counters = [
 export default class Counters extends Component {
   state = {
     counters,
+    total: 0,
   };
 
   increment = (id, steps = 1) => {
@@ -28,7 +29,7 @@ export default class Counters extends Component {
     this.setState((prevState) => {
       return {
         counters: prevState.counters.map((item) => {
-          if (item.id === id) {
+          if (item.id === id && item.count > 0) {
             return { ...item, count: item.count - steps };
           }
           return item;
@@ -48,6 +49,10 @@ export default class Counters extends Component {
             decrement={this.decrement}
           />
         ))}
+        <h1>
+          Total amount:
+          {this.state.counters.reduce((acc, curr) => acc + curr.count, 0)}
+        </h1>
       </div>
     );
   }
